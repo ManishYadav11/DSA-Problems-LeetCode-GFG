@@ -1,0 +1,19 @@
+## Simple Kadanes Algorithm for finding max Subarray Sum
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int maxsum = 0;
+        int max = Integer.MIN_VALUE;
+        for(int i=0;i<nums.length ; i++){
+            maxsum = maxsum + nums[i];
+            if(maxsum > max){
+                max = maxsum;
+            }
+            if(maxsum < 0){
+                maxsum = 0;
+            }
+        }
+        return max;
+        
+    }
+}
