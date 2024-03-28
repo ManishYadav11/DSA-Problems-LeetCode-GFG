@@ -1,0 +1,30 @@
+## Simple Kadanes Algorithms Approach for finding maxProd Subarray
+
+class Solution {
+    // Function to find maximum product subarray
+    long maxProduct(int[] arr, int n) {
+        
+       long maxProd = arr[0];
+        long minProd = arr[0];
+        long res = arr[0] ;
+        
+        for(int i = 1 ; i<arr.length ; i++){
+            
+            if(arr[i] < 0) {                     //if any negative elements occured swap maxProd and minprod
+               long temp = maxProd;
+                maxProd = minProd;
+                minProd = temp;
+            }
+                
+                // update maxProd & minProd
+            maxProd = Math.max(arr[i] , maxProd * arr[i]);
+            minProd = Math.min(arr[i] , minProd * arr[i]) ;
+                
+            res = Math.max(res , Math.max(maxProd , minProd)) ;
+            
+        }
+        
+         return res;
+        // code here
+    }
+}
